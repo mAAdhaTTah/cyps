@@ -1,49 +1,49 @@
 <?php
 /**
-   * Spyc -- A Simple PHP YAML Class
+   * Cyps -- A Simple PHP YAML Class
    * @version 0.5.1
    * @author Vlad Andersen <vlad.andersen@gmail.com>
    * @author Chris Wanstrath <chris@ozmm.org>
-   * @link https://github.com/mustangostang/spyc/
+   * @link https://github.com/mustangostang/cyps/
    * @copyright Copyright 2005-2006 Chris Wanstrath, 2006-2011 Vlad Andersen
    * @license http://www.opensource.org/licenses/mit-license.php MIT License
-   * @package Spyc
+   * @package Cyps
    */
 
-if (!function_exists('spyc_load')) {
+if (!function_exists('cyps_load')) {
   /**
    * Parses YAML to array.
    * @param string $string YAML string.
    * @return array
    */
-  function spyc_load ($string) {
-    return Spyc::YAMLLoadString($string);
+  function cyps_load ($string) {
+    return Cyps::YAMLLoadString($string);
   }
 }
 
-if (!function_exists('spyc_load_file')) {
+if (!function_exists('cyps_load_file')) {
   /**
    * Parses YAML to array.
    * @param string $file Path to YAML file.
    * @return array
    */
-  function spyc_load_file ($file) {
-    return Spyc::YAMLLoad($file);
+  function cyps_load_file ($file) {
+    return Cyps::YAMLLoad($file);
   }
 }
 
-if (!function_exists('spyc_dump')) {
+if (!function_exists('cyps_dump')) {
   /**
    * Dumps array to YAML.
    * @param array $data Array.
    * @return string
    */
-  function spyc_dump ($data) {
-    return Spyc::YAMLDump($data, false, false, true);
+  function cyps_dump ($data) {
+    return Cyps::YAMLDump($data, false, false, true);
   }
 }
 
-if (!class_exists('Spyc')) {
+if (!class_exists('Cyps')) {
 
 /**
    * The Simple PHP YAML Class.
@@ -54,20 +54,20 @@ if (!class_exists('Spyc')) {
    *
    * Usage:
    * <code>
-   *   $Spyc  = new Spyc;
-   *   $array = $Spyc->load($file);
+   *   $Cyps  = new Cyps;
+   *   $array = $Cyps->load($file);
    * </code>
    * or:
    * <code>
-   *   $array = Spyc::YAMLLoad($file);
+   *   $array = Cyps::YAMLLoad($file);
    * </code>
    * or:
    * <code>
-   *   $array = spyc_load_file($file);
+   *   $array = cyps_load_file($file);
    * </code>
-   * @package Spyc
+   * @package Cyps
    */
-class Spyc {
+class Cyps {
 
   // SETTINGS
 
@@ -116,7 +116,7 @@ class Spyc {
   public $_nodeId;
 
 /**
- * Load a valid YAML string to Spyc.
+ * Load a valid YAML string to Cyps.
  * @param string $input
  * @return array
  */
@@ -125,7 +125,7 @@ class Spyc {
   }
 
  /**
- * Load a valid YAML file to Spyc.
+ * Load a valid YAML file to Cyps.
  * @param string $file
  * @return array
  */
@@ -141,7 +141,7 @@ class Spyc {
      * simple.
      *  Usage:
      *  <code>
-     *   $array = Spyc::YAMLLoad('lucky.yaml');
+     *   $array = Cyps::YAMLLoad('lucky.yaml');
      *   print_r($array);
      *  </code>
      * @access public
@@ -149,8 +149,8 @@ class Spyc {
      * @param string $input Path of YAML file or string containing YAML
      */
   public static function YAMLLoad($input) {
-    $Spyc = new Spyc;
-    return $Spyc->__load($input);
+    $Cyps = new Cyps;
+    return $Cyps->__load($input);
   }
 
   /**
@@ -165,7 +165,7 @@ class Spyc {
      *
      *  Usage:
      *  <code>
-     *   $array = Spyc::YAMLLoadString("---\n0: hello world\n");
+     *   $array = Cyps::YAMLLoadString("---\n0: hello world\n");
      *   print_r($array);
      *  </code>
      * @access public
@@ -173,8 +173,8 @@ class Spyc {
      * @param string $input String containing YAML
      */
   public static function YAMLLoadString($input) {
-    $Spyc = new Spyc;
-    return $Spyc->__loadString($input);
+    $Cyps = new Cyps;
+    return $Cyps->__loadString($input);
   }
 
   /**
@@ -199,8 +199,8 @@ class Spyc {
      * @param int $no_opening_dashes Do not start YAML file with "---\n"
      */
   public static function YAMLDump($array, $indent = false, $wordwrap = false, $no_opening_dashes = false) {
-    $spyc = new Spyc;
-    return $spyc->dump($array, $indent, $wordwrap, $no_opening_dashes);
+    $cyps = new Cyps;
+    return $cyps->dump($array, $indent, $wordwrap, $no_opening_dashes);
   }
 
 
@@ -1138,13 +1138,13 @@ class Spyc {
 }
 }
 
-// Enable use of Spyc from command line
-// The syntax is the following: php Spyc.php spyc.yaml
+// Enable use of Cyps from command line
+// The syntax is the following: php Cyps.php cyps.yaml
 
 do {
   if (PHP_SAPI != 'cli') break;
   if (empty ($_SERVER['argc']) || $_SERVER['argc'] < 2) break;
-  if (empty ($_SERVER['PHP_SELF']) || FALSE === strpos ($_SERVER['PHP_SELF'], 'Spyc.php') ) break;
+  if (empty ($_SERVER['PHP_SELF']) || FALSE === strpos ($_SERVER['PHP_SELF'], 'Cyps.php') ) break;
   $file = $argv[1];
-  echo json_encode (spyc_load_file ($file));
+  echo json_encode (cyps_load_file ($file));
 } while (0);

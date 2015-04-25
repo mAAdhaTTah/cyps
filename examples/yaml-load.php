@@ -7,15 +7,15 @@
 # license: [MIT License, http://www.opensource.org/licenses/mit-license.php]
 #
 
-include('../Spyc.php');
+include('../Cyps.php');
 
-$array = Spyc::YAMLLoad('../spyc.yaml');
+$array = Cyps::YAMLLoad('../cyps.yaml');
 
-echo '<pre><a href="spyc.yaml">spyc.yaml</a> loaded into PHP:<br/>';
+echo '<pre><a href="cyps.yaml">cyps.yaml</a> loaded into PHP:<br/>';
 print_r($array);
 echo '</pre>';
 
 
 echo '<pre>YAML Data dumped back:<br/>';
-echo Spyc::YAMLDump($array);
+echo Cyps::YAMLDump($array);
 echo '</pre>';
